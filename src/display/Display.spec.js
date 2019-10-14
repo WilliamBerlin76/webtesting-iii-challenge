@@ -5,5 +5,5 @@ import Display from './Display';
 import { render } from 'react-testing-library';
 
 test('Display is rendered', () => {
-    render(<Display />)
+    expect(render(<Display />)).toMatchSnapshot()
 })
