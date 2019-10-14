@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Controls from './Controls';
 
-test('it renders correctly', () => {
+test('controls render correctly', () => {
     expect(render(<Controls/>)).toMatchSnapshot()
 })
 
