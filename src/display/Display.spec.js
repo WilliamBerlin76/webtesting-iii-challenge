@@ -15,8 +15,6 @@ test('displays closed if closed prop is true', () => {
         <Display closedClass={closedDisplayMock} closed={true} />
     );
     fireEvent.click(getByText(/closed/i))
-
-    
 });
 
 test('displays unlocked if locked prop is false', () => {
@@ -32,8 +30,8 @@ test('lockedClass has green-led class when locked is false ', () => {
         <Display />
     )
     const unlock = getByText(/unlocked/i)
-    expect(unlock).toBeInTheDocument()
-    expect(unlock).toHaveClass('green-led')
+        expect(unlock).toBeInTheDocument()
+        expect(unlock).toHaveClass('green-led')
 });
 
 test('lockedClass class is red-led when locked is true', () => {
@@ -41,7 +39,17 @@ test('lockedClass class is red-led when locked is true', () => {
         <Display locked={true}/>
     )
     const lock = getByText('Unlocked')
-    expect(lock).toBeInTheDocument()
-    expect(lock).toHaveClass('green-led')
+        expect(lock).toBeInTheDocument()
+        expect(lock).toHaveClass('green-led')
 });
-
+test('closedClass class is changed to correct class when closed value is toggled', () => {
+    const { getByText } = render(
+        <Display />
+    )
+    const closed = getByText('Closed')
+        expect(closed).toBeInTheDocument()
+        expect(closed).toHaveClass('red-led')
+    const open = getByText('Open')
+        expect(open).toBeInTheDocument()
+        expect(open).toHaveClass('green-led')
+});
