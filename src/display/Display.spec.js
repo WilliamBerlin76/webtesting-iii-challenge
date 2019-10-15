@@ -3,7 +3,7 @@ import React from 'react';
 
 import Display from './Display';
 import { render, fireEvent } from 'react-testing-library';
-import '@testing-library/jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect';
 
 test('Display is rendered', () => {
     expect(render(<Display />)).toMatchSnapshot()

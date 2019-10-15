@@ -1,6 +1,7 @@
 // Test away!
 import React from 'react';
 import { render, fireEvent, findByText } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 
 import Controls from './Controls';
 
@@ -54,6 +55,20 @@ test('lock/unlock button text displays "Unlock Gate" when unlocked', () => {
     expect(setButtonTextMock).toHaveBeenCalled();
     expect(setButtonTextMock).toHaveBeenCalledTimes(1);
     expect(fireEvent.click(getByText(/Unlock gate/i)))
+})
+
+test('unlock button is disabled when gate is open', () => {
+    const { getByTestId } = render(
+        <Controls closed={false}/>
+    )
+    expect(getByTestId('button1')).toBeDisabled()
+})
+
+test('open/close button is disabled when gate is locked', () => {
+    const { getByTestId } = render(
+        <Controls locked={true}/>
+    )
+    expect(getByTestId('button2')).toBeDisabled()
 })
 
 
